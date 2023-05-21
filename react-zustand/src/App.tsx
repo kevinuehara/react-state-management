@@ -1,9 +1,11 @@
-import { ITheme, useTheme } from "./store";
-import { ColorType } from "./store/types";
+import { FormTodo } from "./components/FormTodo";
+import { ListTodo } from "./components/ListTodo";
+import { ITheme, useTheme } from "./store/theme";
+import { ColorType } from "./store/theme/types";
 
 function App() {
   const color = useTheme((state: ITheme) => state.color);
-  const changeColor = useTheme((state: ITheme) => state.changeTheme);
+
   return (
     <>
       <div
@@ -13,7 +15,8 @@ function App() {
           backgroundColor: color === ColorType.LIGHT ? "#fff" : "#000",
         }}
       >
-        <button onClick={changeColor}>Trocar tema</button>
+        <FormTodo />
+        <ListTodo />
       </div>
     </>
   );
