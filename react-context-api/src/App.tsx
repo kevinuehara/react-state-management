@@ -1,17 +1,20 @@
+import { FormTodo } from "./components/FormTodo";
+import { ListTodo } from "./components/ListTodo";
 import { useTheme } from "./hooks/useTheme";
 import { ColorType } from "./providers/theme/types";
 
 function App() {
-  const { color, changeColor } = useTheme();
+  const { color } = useTheme();
   return (
     <div
       style={{
         height: "100vh",
         width: "100vw",
-        backgroundColor: color === ColorType.LIGHT ? "#fff" : "#000",
+        backgroundColor: color === ColorType.LIGHT ? "#fff" : "#111827",
       }}
     >
-      <button onClick={changeColor}>Trocar tema</button>
+      <FormTodo />
+      <ListTodo />
     </div>
   );
 }

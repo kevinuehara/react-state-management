@@ -1,0 +1,17 @@
+.item {
+    display: flex;
+    align-items: center;
+}
+
+.removeIcon::after {
+    display: inline-block;
+    content: "\00d7"; 
+    font-size: 20px;
+    margin-top: -2px;
+    margin-left: 5px;
+}
+
+.removeIcon:hover::after {
+    color: red;
+    cursor: pointer;
+}
