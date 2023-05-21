@@ -9,12 +9,25 @@ export const todoSlice = createSlice({
     todos: initialState,
   },
   reducers: {
-    addTodo: (state, action: PayloadAction<ITodo>) => {
-      return { ...state, todos: [...state.todos, action.payload] };
+    addTodo: (state, action: PayloadAction<string>) => {
+      const newTodo: ITodo = {
+        id: Math.random() * 100,
+        done: false,
+        label: action.payload,
+      };
+
+      return { ...state, todos: [...state.todos, newTodo] };
+    },
+    removeTodo: (state, action: PayloadAction<number>) => {
+      const removed = state.todos.filter((todo) => todo.id !== action.payload);
+      return { ...state, todos: removed };
     },
   },
 });
 
-export const { addTodo } = todoSlice.actions;
+export const { addTodo, removeTodo } = todoSlice.actions;
+
+export const getTodos = (state: { todo: { todos: ITodo[] } }) =>
+  state.todo.todos;
 
 export default todoSlice.reducer;

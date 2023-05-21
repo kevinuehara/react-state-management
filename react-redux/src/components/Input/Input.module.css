@@ -1,0 +1,19 @@
+.inputContainer {
+    font-family: Arial, Helvetica, sans-serif;
+    margin:0;
+    padding:0;
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+}
+
+.inputLabel {
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.input {
+    height: 30px;
+    border: 1px solid #000;
+    border-radius: 4px;
+}
