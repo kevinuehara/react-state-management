@@ -1,10 +1,11 @@
 import { useAtom } from "jotai";
-import { changeTheme, theme } from "./atoms/theme";
-import { ColorType } from "./atoms/types";
+import { ColorType } from "./atoms/theme/types";
+import { changeTheme, theme } from "./atoms/theme/store";
+import { FormTodo } from "./components/FormTodo";
+import { ListTodo } from "./components/ListTodo";
 
 function App() {
   const [color] = useAtom(theme);
-  const [_, setChangeColor] = useAtom(changeTheme);
 
   return (
     <>
@@ -15,7 +16,8 @@ function App() {
           backgroundColor: color === ColorType.LIGHT ? "#fff" : "#000",
         }}
       >
-        <button onClick={setChangeColor}>Trocar Tema</button>
+        <FormTodo />
+        <ListTodo />
       </div>
     </>
   );
