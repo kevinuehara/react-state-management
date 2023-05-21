@@ -1,35 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useDispatch, useSelector } from "react-redux";
+import { changeTheme, selectTheme } from "./redux/theme/slice";
+import { useState } from "react";
+import { ITodo } from "./redux/todo/types";
+import { addTodo } from "./redux/todo/slice";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [todo, setTodo] = useState<string>("");
+  const dispatch = useDispatch();
+
+  const color = useSelector(selectTheme);
+
+  const handleChangeTheme = () => {
+    dispatch(changeTheme());
+  };
+
+  const handleAddTodo = () => {
+    const value: ITodo = {
+      name: todo,
+      id: Math.random() * 1000,
+      done: false,
+    };
+
+    dispatch(addTodo(value));
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div
+      style={{
+        height: "100vh",
+        width: "100vw",
+        backgroundColor: color === "LIGHT" ? "#fff" : "#000",
+      }}
+    >
+      <button onClick={handleChangeTheme}>Trocar tema</button>
+
+      <input
+        type="text"
+        name="todo"
+        id="todo"
+        onChange={(evt) => setTodo(evt.target.value)}
+      />
+      <button onClick={handleAddTodo}>Add Todo</button>
+    </div>
+  );
 }
 
-export default App
+export default App;
