@@ -1,8 +1,8 @@
 import { PropsWithChildren, createContext, useState } from "react";
-import { ColorType, ThemeProviderState } from "./types";
+import { ThemeProviderState } from "./types";
 
 const defaultValues: ThemeProviderState = {
-  color: ColorType.LIGHT,
+  isDark: false,
 };
 
 export const ThemeContext = createContext<ThemeProviderState>(defaultValues);
@@ -10,14 +10,14 @@ export const ThemeContext = createContext<ThemeProviderState>(defaultValues);
 export const ThemeContextProvider: React.FC<PropsWithChildren> = ({
   children,
 }) => {
-  const [color, setColor] = useState<ColorType>(ColorType.LIGHT);
+  const [isDark, setIsDark] = useState<boolean>(false);
 
   const changeColor = () => {
-    setColor(color === ColorType.LIGHT ? ColorType.DARK : ColorType.LIGHT);
+    setIsDark(!isDark);
   };
 
   return (
-    <ThemeContext.Provider value={{ color, changeColor }}>
+    <ThemeContext.Provider value={{ isDark, changeColor }}>
       {children}
     </ThemeContext.Provider>
   );

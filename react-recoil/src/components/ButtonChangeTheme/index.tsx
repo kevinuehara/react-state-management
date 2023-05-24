@@ -1,19 +1,16 @@
 import { useSetRecoilState } from "recoil";
 import button from "./button.module.css";
-import { themeState } from "../../store/theme";
-import { ColorTypes } from "../../store/theme/types";
+import { isDarkState } from "../../store/theme";
 
 interface ButtonChangeThemeProps {
   label: string;
 }
 
 export const ButtonChangeTheme = ({ label }: ButtonChangeThemeProps) => {
-  const setChangeColor = useSetRecoilState(themeState);
+  const setChangeColor = useSetRecoilState(isDarkState);
 
   const handleChangeColor = () => {
-    setChangeColor((color) =>
-      color === ColorTypes.LIGHT ? ColorTypes.DARK : ColorTypes.LIGHT
-    );
+    setChangeColor((color) => !color);
   };
 
   return (

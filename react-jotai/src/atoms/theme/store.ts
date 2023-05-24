@@ -1,7 +1,6 @@
 import { atom } from "jotai";
-import { ColorType } from "./types";
 
-export const theme = atom(ColorType.LIGHT);
+export const isDark = atom(false);
 export const changeTheme = atom(null, (get, set) => {
-  set(theme, get(theme) === ColorType.LIGHT ? ColorType.DARK : ColorType.LIGHT);
+  set(isDark, !get(isDark));
 });

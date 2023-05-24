@@ -11,7 +11,7 @@ export const todoSlice = createSlice({
   reducers: {
     addTodo: (state, action: PayloadAction<string>) => {
       const newTodo: ITodo = {
-        id: Math.random() * 100,
+        id: Math.random() * 1000,
         done: false,
         label: action.payload,
       };

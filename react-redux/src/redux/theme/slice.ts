@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export interface ThemeState {
-  color: "LIGHT" | "DARK";
+  isDark: boolean;
 }
 
 const initialState: ThemeState = {
-  color: "LIGHT",
+  isDark: false,
 };
 
 export const slice = createSlice({
@@ -13,13 +13,13 @@ export const slice = createSlice({
   initialState,
   reducers: {
     changeTheme: (state) => {
-      return { ...state, color: state.color === "LIGHT" ? "DARK" : "LIGHT" };
+      return { ...state, isDark: !state.isDark };
     },
   },
 });
 
 export const { changeTheme } = slice.actions;
 
-export const selectTheme = (state: { theme: ThemeState }) => state.theme.color;
+export const getTheme = (state: { theme: ThemeState }) => state.theme.isDark;
 
 export default slice.reducer;

@@ -1,9 +1,4 @@
-export enum ColorType {
-  LIGHT = "LIGHT",
-  DARK = "DARK",
-}
-
 export interface ThemeProviderState {
-  color: ColorType;
+  isDark: boolean;
   changeColor?: VoidFunction;
 }

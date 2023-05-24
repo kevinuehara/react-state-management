@@ -2,14 +2,16 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
-import { Provider } from "jotai";
+import { Provider as JotaiProvider } from "jotai";
 import { ButtonChangeTheme } from "./components/ButtonChangeTheme/index.tsx";
+import { Content } from "./components/Content/index.tsx";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <Provider>
+    <JotaiProvider>
       <ButtonChangeTheme label="Trocar tema" />
+      <Content text="Hello World!" />
       <App />
-    </Provider>
+    </JotaiProvider>
   </React.StrictMode>
 );
