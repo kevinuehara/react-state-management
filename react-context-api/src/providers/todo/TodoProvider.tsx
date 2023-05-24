@@ -28,10 +28,10 @@ export const TodoProvider: React.FC<PropsWithChildren> = ({ children }) => {
     setTodos((todos) => [...todos, newTodo]);
   }, []);
 
-  const removeTodo = useCallback((id: number) => {
+  const removeTodo = (id: number) => {
     const removed = todos.filter((todo) => todo.id !== id);
     setTodos(removed);
-  }, []);
+  };
 
   return (
     <TodoContext.Provider value={{ todos, addTodo, removeTodo }}>
