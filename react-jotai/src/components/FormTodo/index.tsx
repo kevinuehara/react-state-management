@@ -15,7 +15,7 @@ export const FormTodo = () => {
         label="Todo"
         onChange={(evt) => setNewTodo(evt.target.value)}
       />
-      <Button label="Adicionar" onClick={setAddTodo} />
+      <Button label="Add" onClick={setAddTodo} />
     </div>
   );
 };

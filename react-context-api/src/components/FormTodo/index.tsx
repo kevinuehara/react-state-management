@@ -8,8 +8,6 @@ export const FormTodo = () => {
   const [todo, setTodo] = useState("");
   const { addTodo } = useTodo();
 
-  console.log("renderizou");
-
   const handleAddTodo = () => {
     addTodo(todo);
     setTodo("");

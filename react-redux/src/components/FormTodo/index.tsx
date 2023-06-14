@@ -9,8 +9,6 @@ export const FormTodo = () => {
   const [todo, setTodo] = useState("");
   const dispatch = useDispatch();
 
-  console.log("renderizou");
-
   const handleAddTodo = () => {
     dispatch(addTodo(todo));
     setTodo("");
@@ -23,7 +21,7 @@ export const FormTodo = () => {
         label="Todo"
         onChange={(evt) => setTodo(evt.target.value)}
       />
-      <Button label="Adicionar" onClick={handleAddTodo} />
+      <Button label="Add" onClick={handleAddTodo} />
     </div>
   );
 };
